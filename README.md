@@ -11,7 +11,7 @@
 - Отправка по Email
 
 ## Используемые технологии
-- Python: openpyxl, python-docx, pillow, smtplib (для работы приложения должен быть собран в "script.exe" с помощью pyinstaller)
+- Python: openpyxl, python-docx, pillow, smtplib (для работы приложения должен быть собран в "script.exe" с помощью "pyinstaller --onefile --noconsole script.py")
 - C# (WPF): GUI-интерфейс (для получения данных из БД вызывается "script.exe")
 
 ## Как использовать
