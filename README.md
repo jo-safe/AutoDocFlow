@@ -12,7 +12,7 @@
 
 ## Используемые технологии
 - Python: openpyxl, python-docx, pillow, smtplib
-- C#: GUI-интерфейс
+- C# (WPF): GUI-интерфейс
 
 ## Как использовать
 1. Запустите "AutoDocFlow.exe" (не "script.exe")
