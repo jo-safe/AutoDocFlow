@@ -11,8 +11,8 @@
 - Отправка по Email
 
 ## Используемые технологии
-- Python: openpyxl, python-docx, pillow, smtplib
-- C# (WPF): GUI-интерфейс
+- Python: openpyxl, python-docx, pillow, smtplib (для работы приложения должен быть собран в "script.exe" с помощью pyinstaller)
+- C# (WPF): GUI-интерфейс (для получения данных из БД вызывается "script.exe")
 
 ## Как использовать
 1. Запустите "AutoDocFlow.exe" (не "script.exe")
