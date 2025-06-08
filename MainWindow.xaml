@@ -1,0 +1,144 @@
+﻿<Window x:Class="AutoDocFlow.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Генерация документов" Height="750" Width="700">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Выбор файлов -->
+            <RowDefinition Height="Auto"/>
+            <!-- Разделитель -->
+            <RowDefinition Height="Auto"/>
+            <!-- Фильтры -->
+            <RowDefinition Height="Auto"/>
+            <!-- Доп. опции -->
+            <RowDefinition Height="Auto"/>
+            <!-- Кнопка -->
+            <RowDefinition Height="Auto"/>
+            <!-- Разделитель -->
+            <RowDefinition Height="*"/>
+            <!-- Лог -->
+            <RowDefinition Height="Auto"/>
+            <!-- Разделитель -->
+            <RowDefinition Height="25"/>
+            <!-- Status Bar -->
+        </Grid.RowDefinitions>
+
+        <!-- 1. Пять строк выбора файлов -->
+        <Grid Grid.Row="0" Margin="0,0,0,10">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Строки -->
+            <Label Grid.Row="0" Grid.Column="0" Content="База данных:" VerticalAlignment="Center"/>
+            <TextBox x:Name="TB_dbPath" Grid.Row="0" Grid.Column="1" Margin="5" IsReadOnly="True" Height="20"/>
+            <Button x:Name="BT_dbPathOveriew" Content="Обзор" Grid.Row="0" Grid.Column="2" Margin="5" Click="BT_overiew_Click" Tag="{Binding ElementName=TB_dbPath}"/>
+
+            <Label Grid.Row="1" Grid.Column="0" Content="Шаблон документа:" VerticalAlignment="Center"/>
+            <TextBox x:Name="TB_docTemplate" Grid.Row="1" Grid.Column="1" Margin="5" IsReadOnly="True" Height="20"/>
+            <Button x:Name="BT_docTemplateOveriew" Content="Обзор" Grid.Row="1" Grid.Column="2" Margin="5" Click="BT_overiew_Click" Tag="{Binding ElementName=TB_docTemplate}"/>
+
+            <Label Grid.Row="2" Grid.Column="0" Content="Подпись:" VerticalAlignment="Center"/>
+            <TextBox x:Name="TB_signaturePath" Grid.Row="2" Grid.Column="1" Margin="5" IsReadOnly="True" Height="20"/>
+            <Button x:Name="BT_signaturePathOveriew" Content="Обзор" Grid.Row="2" Grid.Column="2" Margin="5" Click="BT_overiew_Click" Tag="{Binding ElementName=TB_signaturePath}"/>
+
+            <Label Grid.Row="3" Grid.Column="0" Content="Печать:" VerticalAlignment="Center"/>
+            <TextBox x:Name="TB_stampPath" Grid.Row="3" Grid.Column="1" Margin="5" IsReadOnly="True" Height="20"/>
+            <Button x:Name="BT_stampPathOveriew" Content="Обзор" Grid.Row="3" Grid.Column="2" Margin="5" Click="BT_overiew_Click" Tag="{Binding ElementName=TB_stampPath}"/>
+
+            <Label Grid.Row="4" Grid.Column="0" Content="Шаблон письма:" VerticalAlignment="Center"/>
+            <TextBox x:Name="TB_mailTemplate" Grid.Row="4" Grid.Column="1" Margin="5" IsReadOnly="True" Height="20"/>
+            <Button x:Name="BT_mailTemplateOveriew" Content="Обзор" Grid.Row="4" Grid.Column="2" Margin="5" Click="BT_overiew_Click" Tag="{Binding ElementName=TB_mailTemplate}"/>
+
+            <Label Grid.Row="5" Grid.Column="0" Content="Путь сохранения:" VerticalAlignment="Center"/>
+            <TextBox x:Name="TB_outputPath" Grid.Row="5" Grid.Column="1" Margin="5" IsReadOnly="True" Height="20"/>
+            <Button x:Name="BT_outputPathOveriew" Content="Обзор" Grid.Row="5" Grid.Column="2" Margin="5" Click="BT_folder_overiew_Click" Tag="{Binding ElementName=TB_mailTemplate}"/>
+
+            <Label Grid.Row="6" Grid.Column="0" Content="Наименование организации:" VerticalAlignment="Center"/>
+            <TextBox x:Name="TB_orgName" Grid.Row="6" Grid.Column="1" Margin="5" Height="20"/>
+
+            <Label Grid.Row="7" Grid.Column="0" Content="Ответственное лицо:" VerticalAlignment="Center"/>
+            <TextBox x:Name="TB_orgPersonName" Grid.Row="7" Grid.Column="1" Margin="5" Height="20"/>
+
+            <Label Grid.Row="8" Grid.Column="0" Content="Эл. почта организации:" VerticalAlignment="Center"/>
+            <TextBox x:Name="TB_orgEmail" Grid.Row="8" Grid.Column="1" Margin="5" Height="20"/>
+
+            <Label Grid.Row="9" Grid.Column="0" Content="Пароль:" VerticalAlignment="Center"/>
+            <PasswordBox x:Name="TB_orgEmailPassword" Grid.Row="9" Grid.Column="1" Margin="5" Height="20"/>
+        </Grid>
+
+        <!-- 3. Горизонтальная черта -->
+        <Separator Grid.Row="1" Margin="0,0,0,5"/>
+
+        <!-- 4. Фильтры -->
+        <Grid Grid.Row="2" Margin="0,10">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="220"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Период -->
+            <Label Grid.Row="0" Grid.Column="0" Content="Период:" VerticalAlignment="Center" Margin="0,0,0,0"/>
+            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+                <DatePicker x:Name="DP_startDate" Width="120" Height="24"/>
+                <TextBlock Text="–" VerticalAlignment="Center" Margin="24,0,24,0"/>
+                <DatePicker x:Name="DP_endDate" Width="120" Height="24"/>
+            </StackPanel>
+            <CheckBox x:Name="CB_filterPeriod" Grid.Row="0" Grid.Column="2" Content="Фильтровать по периоду" Margin="10,0" Checked="CB_Change" Unchecked="CB_Change" Indeterminate="CB_Change" Loaded="CB_Change"/>
+
+            <!-- Контрагент -->
+            <Label Grid.Row="1" Grid.Column="0" Content="Контрагент:" VerticalAlignment="Center"/>
+            <ComboBox x:Name="CoB_contractor" Grid.Row="1" Grid.Column="1" Height="24" SelectionChanged="CoB_contractorSelectionChange"/>
+            <CheckBox x:Name="CB_filterContractor" Grid.Row="1" Grid.Column="2" Content="Фильтровать по контрагенту" Margin="10,0" Checked="CB_Change" Unchecked="CB_Change" Indeterminate="CB_Change" Loaded="CB_Change"/>
+        </Grid>
+
+        <!-- 5. Чекбоксы доп. опций -->
+        <StackPanel Grid.Row="3" Orientation="Vertical" Margin="0,0,0,10">
+            <CheckBox x:Name="CB_addSignature" Content="Добавить подпись" Margin="0,0,0,4"/>
+            <CheckBox x:Name="CB_addStamp" Content="Добавить печать" Margin="0,0,0,4"/>
+            <CheckBox x:Name="CB_sendEmail" Content="Отправить на Email" Margin="0,0,0,4"/>
+        </StackPanel>
+
+        <!-- 6. Кнопка -->
+        <Button x:Name="BT_startGenerating" Grid.Row="4" Content="Сгенерировать документ(ы)" HorizontalAlignment="Right" Margin="0,0,5,10" Click="BT_startGenerating_Click"/>
+
+        <!-- 7. Разделитель -->
+        <Separator Grid.Row="5" Margin="0,0,0,5"/>
+
+        <!-- 8. Лог -->
+        <TextBox Grid.Row="6" x:Name="TB_log" VerticalScrollBarVisibility="Auto"
+                 HorizontalScrollBarVisibility="Auto" TextWrapping="Wrap" AcceptsReturn="True"
+                 IsReadOnly="True" FontFamily="Consolas"/>
+
+        <!-- 7. Разделитель -->
+        <Separator Grid.Row="7" Margin="0,5,0,0"/>
+
+        <StatusBar Grid.Row="8" Margin="0,3,0,0">
+            <StatusBarItem>
+                <TextBlock x:Name="StatusTextBlock" Text="Готов к работе" Foreground="Green"/>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>
